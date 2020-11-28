@@ -1,0 +1,20 @@
+{
+  "name": "advent-of-code-leaderboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@code.valiantys.com:7999/~clement.garin_valiantys.com/advent-of-code-leaderboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.1"
+  }
+}
