@@ -2,7 +2,7 @@
  * TODO
  * - JSDOC
  */
-require('dotenv').config({path: '../.env'})
+require('dotenv').config()
 
 const fetch = require('node-fetch');
 const parseJsonLeaderboard = require('./leaderboard-parser');

@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@code.valiantys.com:7999/~clement.garin_valiantys.com/advent-of-code-leaderboard.git"
+    "url": "ssh://git@github.com:omnisnash/advent-of-code-leaderboard-microsoft-teams.git"
   },
   "keywords": [],
   "author": "",
