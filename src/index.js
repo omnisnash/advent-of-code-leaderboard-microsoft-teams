@@ -56,8 +56,8 @@ async function sendLeaderboardViaTeamMessage(template) {
         leaderboardName: process.env.LEADERBOARD_NAME,
         leaderboardCode: process.env.LEADERBOARD_CODE,
         repositoryUrl: process.env.REPOSITORY_URL,
-        displayGlobalScore: process.env.LEADERBOARD_DISPLAY_GLOBAL_SCORE == true,
-        displayLocalScore: process.env.LEADERBOARD_DISPLAY_LOCAL_SCORE == true,
+        displayGlobalScore: process.env.LEADERBOARD_DISPLAY_GLOBAL_SCORE == 'true',
+        displayLocalScore: process.env.LEADERBOARD_DISPLAY_LOCAL_SCORE == 'true',
         starFormat: STAR_FORMAT
     })
     
