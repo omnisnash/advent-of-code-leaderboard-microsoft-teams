@@ -31,7 +31,8 @@ function parseParticipants(participants, options) {
             starProgression: progression.starProgression,
             lastCompletedDay: progression.lastCompletedDay,
             localScore: participant.local_score,
-            globalScore: participant.global_score
+            globalScore: participant.global_score,
+            lastTs: participant.last_star_ts == 0 ? Infinity : participant.last_star_ts
         });
     }
 
@@ -74,12 +75,30 @@ function parseParticipantProgression(progression, lastStarIdWon, options) {
 function sortLeaderboard(list, orderBy = SORT_BY_STARS) {
     switch(orderBy) {
         case SORT_BY_LOCAL_SCORE:
-            return [...list].sort((a, b) => (a.localScore < b.localScore) ? 1 : -1)
+            return [...list].sort((a, b) => {
+                if (a.localScore == b.localScore) {
+                    return (a.lastTs > b.lastTs) ? 1 : -1
+                }
+
+                return (a.localScore < b.localScore) ? 1 : -1
+            })
         case SORT_BY_GLOBAL_SCORE:
-            return [...list].sort((a, b) => (a.globalScore < b.globalScore) ? 1 : -1)
+            return [...list].sort((a, b) => {
+                if (a.globalScore == b.globalScore) {
+                    return (a.lastTs > b.lastTs) ? 1 : -1
+                }
+
+                return (a.globalScore < b.globalScore) ? 1 : -1
+            })
         default:
         case SORT_BY_STARS:
-            return [...list].sort((a, b) => (a.starsCount < b.starsCount) ? 1 : -1)
+            return [...list].sort((a, b) => {
+                if (a.starsCount == b.starsCount) {
+                    return (a.lastTs > b.lastTs) ? 1 : -1
+                }
+
+                return (a.starsCount < b.starsCount) ? 1 : -1
+            })
     }
 }
 
