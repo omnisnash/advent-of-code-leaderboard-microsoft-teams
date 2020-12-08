@@ -94,7 +94,12 @@ function sortLeaderboard(list, orderBy = SORT_BY_STARS) {
         case SORT_BY_STARS:
             return [...list].sort((a, b) => {
                 if (a.starsCount == b.starsCount) {
-                    return (a.lastTs > b.lastTs) ? 1 : -1
+                    // Handle issue like day 01 of 2020 where all local/global score were 0
+                    if (a.localScore == b.localScore) {
+                        return (a.lastTs > b.lastTs) ? 1 : -1
+                    }
+                    
+                    return (a.localScore < b.localScore) ? 1 : -1
                 }
 
                 return (a.starsCount < b.starsCount) ? 1 : -1
