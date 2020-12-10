@@ -15,10 +15,11 @@ Clone this repository, install node modules using `npm install` then create a `.
 AOC_LEADERBOARD_ID=
 
 # Mandatory: Your session cookie (with access to the private leaderboard)
+# Required format: AOC_COOKIE=session=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 AOC_COOKIE=
 
 # Optional: The webhook URL used to the sent the leaderboard 
-# (see: https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook)is near)
+# (see: https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook)
 TEAMS_WEBHOOK=
 
 # Optional: The year of the event to use
