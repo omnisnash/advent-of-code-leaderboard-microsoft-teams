@@ -5,7 +5,7 @@ Allow you to sent an Advent of Code (AoC) private leaderboard in a Microsoft Tea
 ![Teams message screenshot](./doc/screenshot.jpg)
 
 
-## Installation
+## Running locally
 
 Clone this repository, install node modules using `npm install` then create a `.env` file at the root level with the following content:
 
@@ -47,7 +47,22 @@ LEADERBOARD_DISPLAY_LOCAL_SCORE=
 REPOSITORY_URL=
 ````
 
-Then, run `node src/index.js` to retrieve and send your private leaderboard. Remember, as said on the AoC website:
+Then, run `npm start` to retrieve and send your private leaderboard. Remember, as said on the AoC website:
 
 > Please don't make frequent automated requests to this service - avoid sending requests more often than once every 15 minutes (900 seconds).
 
+## Running using GitHub Actions
+
+Instead of running locally, you can run this as a GitHub action
+1. Fork this repository
+2. In your GitHub repository settings, create each of the desired settings as [GitHub Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository). Make sure to provide all required settings.
+
+![GitHub repository secrets screenshot](./doc/screenshot-secrets.png)
+
+By default the action is configured to run once a day at 4am only during the month of December. You can modify this schedule by editing the cron schedule in `.github/workflows/send-notice-to-teams.yml`
+
+**Remember, as said on the AoC website:**
+
+> Please don't make frequent automated requests to this service - avoid sending requests more often than once every 15 minutes (900 seconds).
+
+You can also nmanually trigger the action from your repository's `Actions` tab.
