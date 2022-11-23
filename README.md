@@ -1,13 +1,13 @@
 # Advent Of Code - Microsoft Teams Leaderboard
 
-Allow you to sent an Advent of Code (AoC) private leaderboard in a Microsoft Teams room via a Webhook connector.
+Publish your Advent of Code (AoC) private leaderboard to a Microsoft Teams room via a Webhook connector.
 
 ![Teams message screenshot](./doc/screenshot.jpg)
 
 
 ## Running locally
 
-Clone this repository, install node modules using `npm install` then create a `.env` file at the root level with the following content:
+Clone this repository, install node modules using `npm install` then create a `.env` file at the root level with the following contents:
 
 ````
 # Mandatory: You leaderboard ID
@@ -54,7 +54,7 @@ Then, run `npm start` to retrieve and send your private leaderboard. Remember, a
 ## Running using GitHub Actions
 
 Instead of running locally, you can run this as a GitHub action
-1. Fork this repository
+1. [Fork this repository](https://github.com/omnisnash/advent-of-code-leaderboard-microsoft-teams/fork)
 2. In your GitHub repository settings, create each of the desired settings as [GitHub Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository). Make sure to provide all required settings.
 
 ![GitHub repository secrets screenshot](./doc/screenshot-secrets.png)
@@ -65,4 +65,4 @@ By default the action is configured to run once a day at 4am only during the mon
 
 > Please don't make frequent automated requests to this service - avoid sending requests more often than once every 15 minutes (900 seconds).
 
-You can also nmanually trigger the action from your repository's `Actions` tab.
+You can also manually trigger the action from your repository's `Actions` tab.
