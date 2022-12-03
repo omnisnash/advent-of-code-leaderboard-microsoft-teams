@@ -38,11 +38,19 @@ async function requestJsonLeaderboard() {
 }
 
 async function sendLeaderboardViaTeamMessage(template) {
-    await fetch(process.env.TEAMS_WEBHOOK, {
+    const result = fetch(process.env.TEAMS_WEBHOOK, {
         method: 'post',
         body: JSON.stringify(template),
         headers: { 'Content-Type': 'application/json' },
-    });
+    }).then(response => response.text())
+        .then(data => {
+            // Teams webhook sends back a body with '1' on success
+            if (data !== '1') {
+                // Various errors can come back as body messages with a 200 status code, which maskes errors as success
+                throw new Error('Failed to send the leaderboard to Teams. The Teams webhook responded with the following error:\n\    ' + data)
+            }
+        })
+    return result
 }
 
 (async () => {
