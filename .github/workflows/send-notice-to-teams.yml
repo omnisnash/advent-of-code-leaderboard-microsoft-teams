@@ -12,8 +12,8 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2                # clones your repo
-      - uses: actions/setup-node@v2              # sets up Node
+      - uses: actions/checkout@v3                # clones your repo
+      - uses: actions/setup-node@v3              # sets up Node
         with:
           node-version: '16'
       - run: npm ci
