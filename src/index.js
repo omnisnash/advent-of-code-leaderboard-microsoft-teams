@@ -63,6 +63,7 @@ async function sendLeaderboardViaTeamMessage(template) {
     const template = generateTeamsMessageCardLeaderboard(parsedLeaderboard, {
         leaderboardName: process.env.LEADERBOARD_NAME,
         leaderboardCode: process.env.LEADERBOARD_CODE,
+        leaderboardID: process.env.AOC_LEADERBOARD_ID,
         repositoryUrl: process.env.REPOSITORY_URL,
         displayGlobalScore: process.env.LEADERBOARD_DISPLAY_GLOBAL_SCORE == 'true',
         displayLocalScore: process.env.LEADERBOARD_DISPLAY_LOCAL_SCORE == 'true',

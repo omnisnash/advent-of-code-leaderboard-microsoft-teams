@@ -139,7 +139,7 @@ function generateHtmlTable(leaderboard, options) {
         html += `
             <div style="display: flex; align-items: center; margin-top: 40px;">
                 <div style="flex: 0 0 auto; margin-right: 60px;">
-                    <a href="https://adventofcode.com/${leaderboard.eventYear}/leaderboard/private/view/${options.leaderboardCode}" style="color: #009900; text-decoration: none;">
+                    <a href="https://adventofcode.com/${leaderboard.eventYear}/leaderboard/private/view/${options.leaderboardID}" style="color: #009900; text-decoration: none;">
                         [Review the rest on the full leaderboard]<br>
                         <span style="font-size: 0.7em">Code: ${options.leaderboardCode}</span>
                     </a>

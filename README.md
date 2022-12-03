@@ -10,7 +10,7 @@ Publish your Advent of Code (AoC) private leaderboard to a Microsoft Teams room 
 Clone this repository, install node modules using `npm install` then create a `.env` file at the root level with the following contents:
 
 ````
-# Mandatory: You leaderboard ID
+# Mandatory: Your leaderboard ID
 # (available in the URL https://adventofcode.com/{year}/leaderboard/private/view/{leaderboard-id)
 AOC_LEADERBOARD_ID=
 
