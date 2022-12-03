@@ -45,6 +45,10 @@ LEADERBOARD_DISPLAY_LOCAL_SCORE=
 # Optional: If provided, display a link to the repositories
 # (useful if everyone share their code at the same place)
 REPOSITORY_URL=
+
+# Optional: If provided, change the limit of how many players are included on the leaderboard
+# (10 is the default. Teams rejects messages over 28 KB which can easily be hit with 15 players)
+LEADERBOARD_LIMIT=
 ````
 
 Then, run `npm start` to retrieve and send your private leaderboard. Remember, as said on the AoC website:
