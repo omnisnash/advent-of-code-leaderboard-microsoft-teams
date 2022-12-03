@@ -66,6 +66,7 @@ async function sendLeaderboardViaTeamMessage(template) {
         repositoryUrl: process.env.REPOSITORY_URL,
         displayGlobalScore: process.env.LEADERBOARD_DISPLAY_GLOBAL_SCORE == 'true',
         displayLocalScore: process.env.LEADERBOARD_DISPLAY_LOCAL_SCORE == 'true',
+        playerLimit: (process.env.LEADERBOARD_LIMIT) ? process.env.LEADERBOARD_LIMIT : 10,
         starFormat: STAR_FORMAT
     })
     
