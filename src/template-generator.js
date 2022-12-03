@@ -117,7 +117,36 @@ function generateHtmlTable(leaderboard, options) {
         </tbody>
     `;
 
+    if (options.playerLimit < leaderboard.participants.length) {
+        let last = parseInt(options.playerLimit) + 1
+        html += `
+            <tfoot>
+                <tr>
+                    <td style='text-align: left;padding: 2px;'>${String(last).padStart(2, 0)}) ...</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    ${options.displayLocalScore ? `<td></td>` : ''}
+                    ${options.displayGlobalScore ? `<td></td>` : ''}
+                </tr>
+            </tfoot>
+        `;
+    }
+
     html += `</table>`
+
+    if (options.playerLimit < leaderboard.participants.length && options.leaderboardCode) {
+        html += `
+            <div style="display: flex; align-items: center; margin-top: 40px;">
+                <div style="flex: 0 0 auto; margin-right: 60px;">
+                    <a href="https://adventofcode.com/${leaderboard.eventYear}/leaderboard/private/view/${options.leaderboardCode}" style="color: #009900; text-decoration: none;">
+                        [Review the rest on the full leaderboard]<br>
+                        <span style="font-size: 0.7em">Code: ${options.leaderboardCode}</span>
+                    </a>
+                </div>
+            </div>
+        `;
+    }
 
     return html;
 }
@@ -125,7 +154,9 @@ function generateHtmlTable(leaderboard, options) {
 function generateHtmlTableRow(leaderboard, options) {
     let html = ``;
     let rank = 1;
-    for (let participant of leaderboard.participants) {
+    let playerLimit = Math.min(options.playerLimit, leaderboard.participants.length)
+    for (let x = 0; x < playerLimit; x++) {
+        let participant = leaderboard.participants[x]
         html += `
             <tr style='text-align: center; color: white; '>
                 <td style='text-align: left;padding: 2px;'>${String(rank).padStart(2, 0)}) ${participant.name}</td>
