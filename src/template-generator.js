@@ -5,7 +5,7 @@ const STEPS_NONE = "None";
 function generateTeamsMessageCardLeaderboard(leaderboard, options) {
     const leaderboardName = options.leaderboardName ? options.leaderboardName : '';
 
-    return teamsTemplate = {
+    return {
         "@type": "MessageCard",
         "@context": "http://schema.org/extensions",
         "themeColor": "0f0f23",
@@ -181,7 +181,7 @@ function generateHtmlStarProgression(progression, options) {
 
     
 
-    for(progressionType of progression) {
+    for (const progressionType of progression) {
         switch (progressionType) {
             case options.starFormat[STEPS_ALL]:
                 html += `<span style='color:#ffff66'>*</span>`
