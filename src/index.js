@@ -2,7 +2,6 @@
  * TODO
  * - JSDOC
  */
-require('dotenv').config()
 
 const parseJsonLeaderboard = require('./leaderboard-parser');
 const generateTeamsMessageCardLeaderboard = require('./template-generator');

@@ -16,5 +16,4 @@ jobs:
       - uses: actions/setup-node@v4              # sets up Node
         with:
           node-version: '20'
-      - run: npm ci
       - run: AOC_LEADERBOARD_ID=${{ secrets.AOC_LEADERBOARD_ID }} AOC_COOKIE=${{ secrets.AOC_COOKIE }} TEAMS_WEBHOOK=${{ secrets.TEAMS_WEBHOOK }} DISCORD_WEBHOOK=${{ secrets.DISCORD_WEBHOOK }} EVENT_YEAR=${{ secrets.EVENT_YEAR }} LEADERBOARD_NAME=${{ secrets.LEADERBOARD_NAME }} LEADERBOARD_SORT=${{ secrets.LEADERBOARD_SORT }} LEADERBOARD_CODE=${{ secrets.LEADERBOARD_CODE }} LEADERBOARD_DISPLAY_GLOBAL_SCORE=${{ secrets.LEADERBOARD_DISPLAY_GLOBAL_SCORE }} LEADERBOARD_DISPLAY_LOCAL_SCORE=${{ secrets.LEADERBOARD_DISPLAY_LOCAL_SCORE }}  LEADERBOARD_LIMIT=${{ secrets.LEADERBOARD_LIMIT }} REPOSITORY_URL=${{ secrets.REPOSITORY_URL }} npm start
