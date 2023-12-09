@@ -1,10 +1,10 @@
 name: Notify MS Teams of Leaderboard
 on:
   schedule:                                      # run workflow based on schedule
-    - cron: '0 4 1-25 12 *'                      # from the 1. December till 25. December every day at 4am
+    - cron: '0 4 1-26 12 *'                      # from the 1. December till 25. December every day at 4am
                                                  # be carefull with this setting
                                                  # as the workflow should only be triggered at a rate lower than
-                                                 # 4 times a houre to keep traffic on aoc site low
+                                                 # 4 times an hour to keep traffic on aoc site low
 
   workflow_dispatch:                             # allow to manually start the workflow
 
