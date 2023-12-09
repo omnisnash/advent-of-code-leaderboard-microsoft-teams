@@ -1,6 +1,6 @@
 # Advent Of Code - Microsoft Teams Leaderboard
 
-Publish your Advent of Code (AoC) private leaderboard to a Microsoft Teams room via a Webhook connector.
+Publish your Advent of Code (AoC) private leaderboard to a Microsoft Teams room or a Discord channel via a Webhook connector.
 
 ![Teams message screenshot](./doc/screenshot.jpg)
 
@@ -18,9 +18,13 @@ AOC_LEADERBOARD_ID=
 # Required format: AOC_COOKIE=session=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 AOC_COOKIE=
 
-# Optional: The webhook URL used to the sent the leaderboard 
+# Optional: The webhook URL used to the sent the leaderboard to Microsoft Teams
 # (see: https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook)
 TEAMS_WEBHOOK=
+
+# Optional: The webhook URL used to the sent the leaderboard to Discord
+# (see: https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
+DISCORD_WEBHOOk=
 
 # Optional: The year of the event to use
 # (current year is used by default, but it's recommended to set, since the next year is near)

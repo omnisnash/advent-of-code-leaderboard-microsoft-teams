@@ -6,6 +6,7 @@ require('dotenv').config()
 
 const parseJsonLeaderboard = require('./leaderboard-parser');
 const generateTeamsMessageCardLeaderboard = require('./template-generator');
+const generateDiscordMessage = require('./template-discord');
 
 const STAR_FORMAT = {'All': 'Gold', 'Partial': 'Silver', 'None': 'None'};
 const EVENT_YEAR = process.env.EVENT_YEAR ? process.env.EVENT_YEAR : new Date().getFullYear();
@@ -20,8 +21,8 @@ function validateEnvVariables() {
     if (!process.env.AOC_COOKIE) {
         errors.push('-AOC_COOKIE')
     }
-    if (!process.env.TEAMS_WEBHOOK) {
-        errors.push('-TEAMS_WEBHOOK')
+    if (!process.env.TEAMS_WEBHOOK && !process.env.DISCORD_WEBHOOK) {
+        errors.push('-TEAMS_WEBHOOK or -DISCORD_WEBHOOK')
     }
 
     if (errors.length != 0) {
@@ -52,14 +53,26 @@ async function sendLeaderboardViaTeamMessage(template) {
     return result
 }
 
+async function sendLeaderboardViaDiscordEmbed(template) {
+    const response = await fetch(process.env.DISCORD_WEBHOOK, {
+        method: 'post',
+        body: JSON.stringify(template),
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.status !== 204) {
+        const text = await response.text();
+        throw new Error(`Failed to send the leaderboard to Discord. HTTP ${response.status}\nResponse: ${text}`);
+    }
+}
+
 (async () => {
     validateEnvVariables();
 
     const jsonLeaderboard = await requestJsonLeaderboard();
 
     const parsedLeaderboard = parseJsonLeaderboard(jsonLeaderboard, {sortLeaderboard: SORT_ORDER, starFormat: STAR_FORMAT})
-
-    const template = generateTeamsMessageCardLeaderboard(parsedLeaderboard, {
+    const options = {
         leaderboardName: process.env.LEADERBOARD_NAME,
         leaderboardCode: process.env.LEADERBOARD_CODE,
         leaderboardID: process.env.AOC_LEADERBOARD_ID,
@@ -68,7 +81,15 @@ async function sendLeaderboardViaTeamMessage(template) {
         displayLocalScore: process.env.LEADERBOARD_DISPLAY_LOCAL_SCORE == 'true',
         playerLimit: (process.env.LEADERBOARD_LIMIT) ? process.env.LEADERBOARD_LIMIT : 10,
         starFormat: STAR_FORMAT
-    })
-    
-    await sendLeaderboardViaTeamMessage(template);
+    };
+
+    if (process.env.TEAMS_WEBHOOK) {
+        const template = generateTeamsMessageCardLeaderboard(parsedLeaderboard, options);
+        await sendLeaderboardViaTeamMessage(template);
+    } else if (process.env.DISCORD_WEBHOOK) {
+        const template = generateDiscordMessage(parsedLeaderboard, options);
+        await sendLeaderboardViaDiscordEmbed(template);
+    } else {
+        throw new Error('Do not know which webhook to send the results to');
+    }
 })();
