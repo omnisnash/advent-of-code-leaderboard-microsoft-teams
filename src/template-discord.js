@@ -58,7 +58,7 @@ function generateRow(leaderboard, options) {
         
         text += `${generateStarProgression(participant.starProgression, options)} `;
         text += `${String(participant.starsCount).padStart(2, ' ')}* `;
-        text += `${participant.lastCompletedDay ? `(Day ${String(participant.lastCompletedDay.day).padStart(2, 0)}-${String(participant.lastCompletedDay.step).padStart(2, 0)})` : ''.padStart(11, ' ')} `;
+        text += `${participant.lastCompletedDay ? `(Day ${String(participant.lastCompletedDay.day).padStart(2, 0)}-${participant.lastCompletedDay.step})` : ''.padStart(10, ' ')} `;
         text += `${participant.name}`;
 
         rank++;
