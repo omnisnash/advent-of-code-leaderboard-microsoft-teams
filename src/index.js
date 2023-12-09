@@ -84,12 +84,14 @@ async function sendLeaderboardViaDiscordEmbed(template) {
     };
 
     if (process.env.TEAMS_WEBHOOK) {
+        console.log('Sending message to Teams...');
         const template = generateTeamsMessageCardLeaderboard(parsedLeaderboard, options);
         await sendLeaderboardViaTeamMessage(template);
-    } else if (process.env.DISCORD_WEBHOOK) {
+    }
+    
+    if (process.env.DISCORD_WEBHOOK) {
+        console.log('Sending message to Discord...');
         const template = generateDiscordMessage(parsedLeaderboard, options);
         await sendLeaderboardViaDiscordEmbed(template);
-    } else {
-        throw new Error('Do not know which webhook to send the results to');
     }
 })();
