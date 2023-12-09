@@ -4,7 +4,6 @@
  */
 require('dotenv').config()
 
-const fetch = require('node-fetch');
 const parseJsonLeaderboard = require('./leaderboard-parser');
 const generateTeamsMessageCardLeaderboard = require('./template-generator');
 

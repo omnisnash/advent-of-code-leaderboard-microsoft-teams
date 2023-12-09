@@ -14,8 +14,7 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "devDependencies": {
-    "dotenv": "^8.2.0",
-    "node-fetch": "^2.6.7"
+  "dependencies": {
+    "dotenv": "^8.2.0"
   }
 }
